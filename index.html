@@ -1,33 +1,76 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>C++ Code</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body{
-    margin:20px;
-    background:#f5f5f5;
-}
+    <title>C++参照コード</title>
 
-pre{
-    background:#1e1e1e;
-    color:#d4d4d4;
-    padding:20px;
-    border-radius:8px;
-    font-size:15px;
-    line-height:1.5;
-    font-family:Consolas,"Courier New",monospace;
-    white-space:pre;
-    overflow:auto;
-}
-</style>
+    <!-- highlight.js のテーマ -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css"
+    >
 
+    <!-- highlight.js 本体 -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js">
+    </script>
+
+    <!-- C++用言語ファイル -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/cpp.min.js">
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            hljs.highlightAll();
+        });
+    </script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 30px;
+            background-color: #0d1117;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            max-width: 1200px;
+            margin: 0 auto 20px;
+            color: #ffffff;
+        }
+
+        .code-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        pre {
+            margin: 0;
+            overflow-x: auto;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+        }
+
+        pre code {
+            display: block;
+            padding: 20px;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 15px;
+            line-height: 1.5;
+            white-space: pre;
+        }
+    </style>
 </head>
 
 <body>
 
-<pre><code>#include&lt;iostream&gt;
+    <h1>C++参照コード</h1>
+
+    <div class="code-container">
+<pre><code class="language-cpp">#include&lt;iostream&gt;
 #include&lt;vector&gt;
 using namespace std;
 
@@ -43,7 +86,10 @@ vector&lt;int&gt; F(int n) {
     }
 
     while (Fnumbers.size() &lt; n) {
-        int nextF = Fnumbers[Fnumbers.size() - 1] + Fnumbers[Fnumbers.size() - 2];
+        int nextF =
+            Fnumbers[Fnumbers.size() - 1]
+            + Fnumbers[Fnumbers.size() - 2];
+
         Fnumbers.push_back(nextF);
     }
 
@@ -111,7 +157,7 @@ int main() {
     cout &lt;&lt; "フィボナッチ数列\n";
 
     for (int i = 0; i &lt; Fnumbers.size(); ++i) {
-        cout &lt;&lt; Fnumbers[i] &lt;&lt; " ";
+        cout &lt;&lt; Fnumbers[i] &lt;&lt; "　";
     }
 
     vector&lt;int&gt; notPrime = removePrime(Fnumbers);
@@ -119,7 +165,7 @@ int main() {
     cout &lt;&lt; "\n素数を除いたフィボナッチ数列\n";
 
     for (int i = 0; i &lt; notPrime.size(); ++i) {
-        cout &lt;&lt; notPrime[i] &lt;&lt; " ";
+        cout &lt;&lt; notPrime[i] &lt;&lt; "　";
     }
 
     vector&lt;int&gt; notEven = removeEven(Fnumbers);
@@ -127,7 +173,7 @@ int main() {
     cout &lt;&lt; "\n偶数を除いたフィボナッチ数列\n";
 
     for (int i = 0; i &lt; notEven.size(); ++i) {
-        cout &lt;&lt; notEven[i] &lt;&lt; " ";
+        cout &lt;&lt; notEven[i] &lt;&lt; "　";
     }
 
     vector&lt;int&gt; notOdd = removeOdd(Fnumbers);
@@ -135,12 +181,12 @@ int main() {
     cout &lt;&lt; "\n奇数を除いたフィボナッチ数列\n";
 
     for (int i = 0; i &lt; notOdd.size(); ++i) {
-        cout &lt;&lt; notOdd[i] &lt;&lt; " ";
+        cout &lt;&lt; notOdd[i] &lt;&lt; "　";
     }
 
     return 0;
-}
-</code></pre>
+}</code></pre>
+    </div>
 
 </body>
 </html>
