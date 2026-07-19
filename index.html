@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>C++ Code</title>
+
+<style>
+body{
+    margin:20px;
+    background:#f5f5f5;
+}
+
+pre{
+    background:#1e1e1e;
+    color:#d4d4d4;
+    padding:20px;
+    border-radius:8px;
+    font-size:15px;
+    line-height:1.5;
+    font-family:Consolas,"Courier New",monospace;
+    white-space:pre;
+    overflow:auto;
+}
+</style>
+
+</head>
+
+<body>
+
+<pre><code>#include&lt;iostream&gt;
+#include&lt;vector&gt;
+using namespace std;
+
+vector&lt;int&gt; F(int n) {
+    vector&lt;int&gt; Fnumbers;
+
+    if (n &gt;= 1) {
+        Fnumbers.push_back(0);
+    }
+
+    if (n &gt;= 2) {
+        Fnumbers.push_back(1);
+    }
+
+    while (Fnumbers.size() &lt; n) {
+        int nextF = Fnumbers[Fnumbers.size() - 1] + Fnumbers[Fnumbers.size() - 2];
+        Fnumbers.push_back(nextF);
+    }
+
+    return Fnumbers;
+}
+
+bool Prime(int number) {
+    if (number &lt;= 1) {
+        return false;
+    }
+
+    for (int i = 2; i * i &lt;= number; ++i) {
+        if (number % i == 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+vector&lt;int&gt; removePrime(const vector&lt;int&gt;&amp; numbers) {
+    vector&lt;int&gt; notPrime;
+
+    for (int num : numbers) {
+        if (num == 0 || num == 1 || !Prime(num)) {
+            notPrime.push_back(num);
+        }
+    }
+
+    return notPrime;
+}
+
+vector&lt;int&gt; removeEven(const vector&lt;int&gt;&amp; numbers) {
+    vector&lt;int&gt; notEven;
+
+    for (int num : numbers) {
+        if (num % 2 != 0) {
+            notEven.push_back(num);
+        }
+    }
+
+    return notEven;
+}
+
+vector&lt;int&gt; removeOdd(const vector&lt;int&gt;&amp; numbers) {
+    vector&lt;int&gt; notOdd;
+
+    for (int num : numbers) {
+        if (num % 2 != 1) {
+            notOdd.push_back(num);
+        }
+    }
+
+    return notOdd;
+}
+
+int main() {
+    int n;
+
+    cout &lt;&lt; "要素数= ";
+    cin &gt;&gt; n;
+
+    vector&lt;int&gt; Fnumbers = F(n);
+
+    cout &lt;&lt; "フィボナッチ数列\n";
+
+    for (int i = 0; i &lt; Fnumbers.size(); ++i) {
+        cout &lt;&lt; Fnumbers[i] &lt;&lt; " ";
+    }
+
+    vector&lt;int&gt; notPrime = removePrime(Fnumbers);
+
+    cout &lt;&lt; "\n素数を除いたフィボナッチ数列\n";
+
+    for (int i = 0; i &lt; notPrime.size(); ++i) {
+        cout &lt;&lt; notPrime[i] &lt;&lt; " ";
+    }
+
+    vector&lt;int&gt; notEven = removeEven(Fnumbers);
+
+    cout &lt;&lt; "\n偶数を除いたフィボナッチ数列\n";
+
+    for (int i = 0; i &lt; notEven.size(); ++i) {
+        cout &lt;&lt; notEven[i] &lt;&lt; " ";
+    }
+
+    vector&lt;int&gt; notOdd = removeOdd(Fnumbers);
+
+    cout &lt;&lt; "\n奇数を除いたフィボナッチ数列\n";
+
+    for (int i = 0; i &lt; notOdd.size(); ++i) {
+        cout &lt;&lt; notOdd[i] &lt;&lt; " ";
+    }
+
+    return 0;
+}
+</code></pre>
+
+</body>
+</html>
